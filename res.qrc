@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ico/clear.png</file>
+        <file>ico/emergency.png</file>
+        <file>ico/empty.png</file>
+        <file>ico/nonono.png</file>
+        <file>ico/Finance.png</file>
+        <file>ico/honor.png</file>
+        <file>ico/Schedule.png</file>
+        <file>ico/System.png</file>
+        <file>ico/StudentInfo.png</file>
+        <file>style/style.qss</file>
+    </qresource>
+</RCC>
