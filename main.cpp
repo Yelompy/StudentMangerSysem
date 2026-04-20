@@ -1,11 +1,12 @@
 #include "mainwindow.h"
-
+#include "databasemanager.h"
 #include <QApplication>
 #include <QFile>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    DataBaseManager::instance();
     QFile styleFile(":/style/style.qss");
     if(styleFile.open(QFile::ReadOnly)){
         QString stylesheet = QString(styleFile.readAll());
