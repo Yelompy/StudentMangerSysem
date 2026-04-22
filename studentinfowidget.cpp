@@ -14,13 +14,15 @@
 #include <QMessageBox>
 #include <QSqlError>
 #include "tabledelegates.h"
+#include <QTableWidgetItem>
+#include <QTableWidget>
 StudentInfoWidget::StudentInfoWidget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::StudentInfoWidget)
 {
     ui->setupUi(this);
     ui->tableWidget->verticalHeader()->setDefaultSectionSize(100);
-
+    ui->tableWidget->setAlternatingRowColors(true);
     //性别列代理
     ComboBoxDelegate* genderDelegate = new ComboBoxDelegate(this);
     genderDelegate->setItem(QStringList()<<"男"<<"女");
@@ -34,6 +36,8 @@ StudentInfoWidget::StudentInfoWidget(QWidget *parent)
     ui->tableWidget->setItemDelegateForColumn(3, new DataEditDelegate(this));
     //图片列处理
     ui->tableWidget->setItemDelegateForColumn(7, new ImageDelegate(this));
+    //连接item修改信号
+    connect(ui->tableWidget,&QTableWidget::itemChanged,this,&StudentInfoWidget::handleItemChanged);
     refreshTable();
 }
 
@@ -219,11 +223,11 @@ void StudentInfoWidget::handleDialogAccepted(QGroupBox *formGroup, QGroupBox *ph
     //绑定参数
     insertQuery.addBindValue(idEdit->text());
     insertQuery.addBindValue(nameEdit->text());
-    insertQuery.addBindValue(genderBox->currentData());
+    insertQuery.addBindValue(genderBox->currentText());
     insertQuery.addBindValue(birthdayEdit->date().toString("yyyy-MM-dd"));
     insertQuery.addBindValue(joinDateEdit->date().toString("yyyy-MM-dd"));
     insertQuery.addBindValue(goalEdit->text());
-    insertQuery.addBindValue(progressCombo->currentData());
+    insertQuery.addBindValue(progressCombo->currentText());
     insertQuery.addBindValue(photoData.isEmpty() ? QVariant() : photoData);
 
     if (!insertQuery.exec()) {
@@ -294,3 +298,47 @@ void StudentInfoWidget::on_btnDeleteLine_clicked()
     refreshTable();
 }
 
+void StudentInfoWidget::handleItemChanged(QTableWidgetItem* item){
+    //获取当前修改项信息
+    const int row = item->row();
+    const int col = item->column();
+
+    //如果尝试修改id列，直接恢复原始值并提示用户
+    if(col == 0){
+        QMessageBox::warning(this,"警告","学号是主键，不能修改! ");
+        refreshTable();
+        return;
+    }
+
+    const QString originalId = ui->tableWidget->item(row, 0)->text();
+    const QString columnName = QStringList{"id", "name", "gender", "birthday", "join_date", "study_goal", "progress", "photo"}[col];
+
+    //事务开始
+    QSqlDatabase::database().transaction();
+    try{
+        //准备更新语句
+        QSqlQuery updateQuery;
+        updateQuery.prepare(QString("UPDATE studentInfo SET %1 = ? WHERE id = ?").arg(columnName));
+        //绑定数据
+        if(col == 7){ //处理图片列
+            updateQuery.addBindValue(item->data(Qt::UserRole).toByteArray());
+        }
+        else{
+            updateQuery.addBindValue(item->text().trimmed());
+        }
+        updateQuery.addBindValue(originalId);
+        //执行更新
+        if(!updateQuery.exec()){
+            throw std::runtime_error("更新失败: "+ updateQuery.lastError().text().toStdString());
+        }
+        //提交事物
+        QSqlDatabase::database().commit();
+    }
+    catch(const std::exception& e){
+        QSqlDatabase::database().rollback();//回滚事物
+        //恢复显示数据
+        refreshTable();
+        //提示错误
+        QMessageBox::critical(this,"操作失败",QString::fromUtf8(e.what()));
+    }
+}

@@ -127,6 +127,7 @@ QLineEdit:disabled {
 /* -------------------- 文本标签 QLabel -------------------- */
 QLabel {
     color: #d0e0f0;
+    background-color: transparent;
 }
 
 QLabel#titleLabel {
@@ -316,7 +317,7 @@ QTabWidget::pane {
     background-color: #1a222e;
     border: 1px solid #2a3a4a;
     border-radius: 5px;
-    top: -1px;
+
 }
 
 QTabWidget::tab-bar {

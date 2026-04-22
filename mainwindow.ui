@@ -222,69 +222,13 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="StudentInfoWidget" name="pageStudentInfo"/>
-      <widget class="QWidget" name="pageFinance">
-       <widget class="QPushButton" name="pushButton_4">
-        <property name="geometry">
-         <rect>
-          <x>230</x>
-          <y>170</y>
-          <width>56</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>1</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="pageSchedule">
-       <widget class="QPushButton" name="pushButton_3">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>180</y>
-          <width>56</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>2</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="pageHonor">
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>160</y>
-          <width>56</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>3</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="pageSystemSetting">
-       <widget class="QPushButton" name="pushButton">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>160</y>
-          <width>56</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>4</string>
-        </property>
-       </widget>
-      </widget>
+      <widget class="ScheduleWidget" name="pageSchedule"/>
+      <widget class="FinancialWidget" name="pageFinance"/>
+      <widget class="QWidget" name="pageHonor"/>
+      <widget class="QWidget" name="pageSystemSetting"/>
      </widget>
     </item>
    </layout>
@@ -306,6 +250,18 @@
    <class>StudentInfoWidget</class>
    <extends>QWidget</extends>
    <header location="global">studentinfowidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ScheduleWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">schedulewidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FinancialWidget</class>
+   <extends>QWidget</extends>
+   <header>financialwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
