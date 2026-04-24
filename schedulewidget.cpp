@@ -88,7 +88,7 @@ void ScheduleWidget::setupUI()
     connect(yearComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),this,&ScheduleWidget::loadSchedule);
     connect(weekComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),this,&ScheduleWidget::loadSchedule);
     connect(addButton,&QPushButton::clicked,this,&ScheduleWidget::addCourse);
-    connect(deleteButton,&QPushButton::clicked,this,ScheduleWidget::deleteCourse);
+    connect(deleteButton,&QPushButton::clicked,this,&ScheduleWidget::deleteCourse);
     connect(prevWeekBtn,&QPushButton::clicked,this,&ScheduleWidget::showPreviousWeek);
     connect(nextWeekBtn,&QPushButton::clicked,this,&ScheduleWidget::showNextWeek);
     connect(tableWidget,&QTableWidget::itemChanged,this,&ScheduleWidget::handleItemChanged);

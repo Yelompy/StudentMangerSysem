@@ -21,6 +21,13 @@ public:
 
 private:
     void setupUI();
+    void loadFinancialRecords();
+    void populateStudentComboBox();
+    void addRecord();
+    void updatePieChart();
+    void updateChart();
+    void editRecord();
+    void deleteRecord();
     QChartView* pieChartView;
     QTableWidget* tableWidget;
     QComboBox* studentComboBox;
