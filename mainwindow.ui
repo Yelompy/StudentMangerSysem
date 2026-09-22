@@ -222,13 +222,13 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>4</number>
       </property>
       <widget class="StudentInfoWidget" name="pageStudentInfo"/>
       <widget class="ScheduleWidget" name="pageSchedule"/>
       <widget class="FinancialWidget" name="pageFinance"/>
-      <widget class="QWidget" name="pageHonor"/>
-      <widget class="QWidget" name="pageSystemSetting"/>
+      <widget class="HonorWall" name="pageHonor"/>
+      <widget class="SyStemSettingsWidget" name="pageSystemSetting"/>
      </widget>
     </item>
    </layout>
@@ -261,7 +261,19 @@
   <customwidget>
    <class>FinancialWidget</class>
    <extends>QWidget</extends>
-   <header>financialwidget.h</header>
+   <header location="global">financialwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>HonorWall</class>
+   <extends>QWidget</extends>
+   <header location="global">honorwall.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SyStemSettingsWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">systemsettingswidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

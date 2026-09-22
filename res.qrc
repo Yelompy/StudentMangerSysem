@@ -10,5 +10,6 @@
         <file>ico/System.png</file>
         <file>ico/StudentInfo.png</file>
         <file>style/style.qss</file>
+        <file>ico/login.png</file>
     </qresource>
 </RCC>

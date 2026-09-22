@@ -1,84 +1,49 @@
-# This file is used to ignore files which are generated
-# ----------------------------------------------------------------------------
+# Qt / CMake build output
+/build/
+/cmake-build-*/
+/.cache/
+/.qtcreator/
 
-*~
-*.autosave
-*.a
-*.core
-*.moc
-*.o
-*.obj
-*.orig
-*.rej
-*.so
-*.so.*
-*_pch.h.cpp
-*_resource.rc
-*.qm
-.#*
-*.*#
-core
-!core/
-tags
-.DS_Store
-.directory
-*.debug
-Makefile*
-*.prl
-*.app
-moc_*.cpp
-ui_*.h
-qrc_*.cpp
-Thumbs.db
-*.res
-*.rc
-/.qmake.cache
-/.qmake.stash
-**/.qmlls.ini
-
-# qtcreator generated files
+# Qt Creator, VS Code and local IDE settings
 *.pro.user*
 *.qbs.user*
 CMakeLists.txt.user*
+/.vscode/
 
-# xemacs temporary files
-*.flc
+# Generated Qt files
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+*.moc
+*.qm
 
-# Vim temporary files
-.*.swp
-
-# Visual Studio generated files
-*.ib_pdb_index
-*.idb
-*.ilk
-*.pdb
-*.sln
-*.suo
-*.vcproj
-*vcproj.*.*.user
-*.ncb
-*.sdf
-*.opensdf
-*.vcxproj
-*vcxproj.*
-
-# MinGW generated files
-*.Debug
-*.Release
-
-# Python byte code
-*.pyc
-
-# Binaries
-# --------
+# Compiled objects and binaries
+*.o
+*.obj
+*.a
+*.so
+*.so.*
 *.dll
+*.dylib
 *.exe
+*.app
+*.pdb
+*.ilk
+*.idb
+Makefile*
 
-# Directories with generated files
-.moc/
-.obj/
-.pch/
-.rcc/
-.uic/
-/build*/
-/.qtcreator/
+# Local application settings and temporary files
+/config.ini
+*.log
+*.tmp
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# SQLite tools and downloaded archives (the sample database is kept)
+/sqllite/*.zip
+/sqllite/*.exe
+/sqllite/*.dll
+/sqllite/*.db-shm
+/sqllite/*.db-wal

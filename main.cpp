@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "databasemanager.h"
+#include "logindialog.h"
 #include <QApplication>
 #include <QFile>
 
@@ -15,7 +16,11 @@ int main(int argc, char *argv[])
     }else{
         qWarning() << "Failed to load stylesheet :" << styleFile.errorString();
     }
-    MainWindow w;
-    w.show();
-    return QCoreApplication::exec();
+    LoginDialog loginDlg;
+    if(loginDlg.exec() == QDialog::Accepted){
+        MainWindow w;
+        w.show();
+        return QCoreApplication::exec();
+    }
+    return  0;
 }

@@ -18,7 +18,10 @@ qt_add_executable(StudentManagerSystem
     tabledelegates.h
     schedulewidget.h schedulewidget.cpp schedulewidget.ui
     financialwidget.h financialwidget.cpp financialwidget.ui
-    financialwidget.h financialwidget.cpp financialwidget.ui
+    honorwall.h honorwall.cpp honorwall.ui
+    settings.h settings.cpp
+    logindialog.h logindialog.cpp logindialog.ui
+    systemsettingswidget.h systemsettingswidget.cpp systemsettingswidget.ui
 
 )
 
